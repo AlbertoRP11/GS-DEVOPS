@@ -17,6 +17,8 @@
         @foreach (var evento in eventos)
         {
 
+            var formattedDate = evento.EventDate.ToString("dd/MM/yyyy");
+            
             <div class="col-md-4">
                 <div class="card mb-4">
                     <div class="card-body">
