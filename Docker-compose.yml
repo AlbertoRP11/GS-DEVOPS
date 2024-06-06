@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - app-data:/app/data
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db;Database=mydb;User=admin;Password=admin
+
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - pgdata:/var/lib/mysql
+
+volumes:
+  app-data:
+  pgdata:
